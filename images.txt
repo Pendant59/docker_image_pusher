@@ -1,4 +1,5 @@
-golang:1.23.6
-confluentinc/cp-kafka:7.6.4
-rabbitmq:4.0
-redis:7
+nginx
+golang
+confluentinc/cp-kafka
+rabbitmq
+redis
