@@ -1,4 +1,4 @@
-nginx:1.19
+nginx:1.26.3
 golang:1.23
 confluentinc/cp-kafka:7.6.4
 rabbitmq:4.0
