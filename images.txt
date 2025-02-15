@@ -3,3 +3,4 @@ golang
 confluentinc/cp-kafka
 rabbitmq
 redis
+--platform=linux/arm64
