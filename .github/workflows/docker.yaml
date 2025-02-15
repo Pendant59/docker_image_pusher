@@ -143,6 +143,7 @@ jobs:
             new_image="$ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/$platform_prefix$name_space_prefix$image_name_tag"
             echo "Tagging image $image as $new_image"
             docker tag "$image" "$new_image"
+            
             echo "Pushing image $new_image"
             docker push "$new_image"
             
