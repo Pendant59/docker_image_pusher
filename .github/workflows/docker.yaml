@@ -86,6 +86,10 @@ jobs:
             image_name=$(echo "$image_name_tag" | awk -F':' '{print $1}')
             echo "Image name: $image_name"
             
+            # 获取标签例如1.25.3
+            image_tag=$(echo "$image_name_tag" | awk -F':' '{print $2}')
+            echo "Image tag: $image_tag"
+            
             # 如果镜像存在于数组中，则添加temp_map
             if [[ -n "${temp_map[$image_name]}" ]]; then
                  # 如果temp_map已经存在镜像名，判断是不是同一命名空间
@@ -128,6 +132,8 @@ jobs:
             name_space=$(echo "$image" | awk -F'/' '{if (NF==3) print $2; else if (NF==2) print $1; else print ""}')
             # 获取镜像名例  例如nginx
             image_name=$(echo "$image_name_tag" | awk -F':' '{print $1}')
+            # 获取标签例如1.25.3
+            image_tag=$(echo "$image_name_tag" | awk -F':' '{print $2}')
     
             name_space_prefix=""
             # 如果镜像名重名
@@ -139,11 +145,9 @@ jobs:
             fi
             
             # 将@sha256:等字符删除
-            image_name_tag="${image_name_tag%%@*}"
-            new_image="$ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/$platform_prefix$name_space_prefix$image_name_tag"
+            new_image="$ALIYUN_REGISTRY/$ALIYUN_NAME_SPACE/$platform_prefix$name_space_prefix$image_name:$image_tag"
             echo "Tagging image $image as $new_image"
             docker tag "$image" "$new_image"
-            
             echo "Pushing image $new_image"
             docker push "$new_image"
             
