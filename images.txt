@@ -1,1 +1,1 @@
-bitnami/postgresql:17.4.0
+nginx:1.20
